@@ -9,6 +9,7 @@
   apt: 
    pkg="go-server={{ gocd_server_version }}"
    state=present
+   force=yes
 
 - name: install | start go-server
   service: 
