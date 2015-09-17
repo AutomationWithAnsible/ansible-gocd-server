@@ -1,4 +1,11 @@
 ---
+- name: restart_gocd_server
+  service: 
+   name=go-server
+   state=restart
+   enabled=yes
+  notify:
+     - wait_for_gocd_server
 
 - name: wait_for_gocd_server
   wait_for: 

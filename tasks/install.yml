@@ -17,6 +17,9 @@
    state="latest"
    force=yes
   when: gocd_server_version | lower == "latest"
+  notify:
+   - restart_gocd_server
+  register: gocd_server_latest_install
 
 - name: install | apt install go-server specific version
   apt: 
@@ -24,6 +27,9 @@
    state="present"
    force=yes
   when: gocd_server_version | lower != "latest"
+  notify:
+   - restart_gocd_server
+  register: gocd_server_version_install
 
 - name: install | start go-server
   service: 
@@ -32,3 +38,4 @@
    enabled=yes
   notify:
      - wait_for_gocd_server
+  when: not gocd_server_version_install | changed and not gocd_server_latest_install | changed 
