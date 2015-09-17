@@ -31,6 +31,16 @@
    - restart_gocd_server
   register: gocd_server_version_install
 
+- name: install | go-server configuraiton file
+  template: 
+    src=go-server.j2
+    dest="/etc/default/go-server"
+    mode=0644
+    group={{ gocd_server_group }}
+    owner={{ gocd_server_user }}
+  notify:
+   - restart_gocd_server
+
 - name: install | start go-server
   service: 
    name=go-server

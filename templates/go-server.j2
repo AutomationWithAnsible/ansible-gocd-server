@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+{{gocd_server_addtional_parameters}}
+
+export GO_SERVER_PORT={{ gocd_server_port }}
+export GO_SERVER_SSL_PORT={{ gocd_server_ssl_port }}
+export SERVER_WORK_DIR={{gocd_server_work_dir}}
+export JAVA_HOME={{ gocd_server_java_home }}
+DAEMON=Y

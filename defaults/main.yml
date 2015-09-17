@@ -1,10 +1,24 @@
 ---
 # defaults file for ansible-gocd-server
 
-gocd_server_version          : "latest"
+gocd_server_version              : "latest"
 
-gocd_server_port             : 8153
+gocd_server_port                 : 8153
 
-gocd_server_wait_for_timeout : 180
+gocd_server_ssl_port             : 8154
 
-gocd_server_apt_repo         : http://dl.bintray.com/gocd/gocd-deb/
+gocd_server_wait_for_timeout     : 180
+
+gocd_server_apt_repo             : http://dl.bintray.com/gocd/gocd-deb/
+
+gocd_server_user                 : go
+
+gocd_server_group                : go
+
+gocd_server_java_version         : "java-8-oracle"
+
+gocd_server_java_home            : "/usr/lib/jvm/{{gocd_server_java_version}}/jre"
+
+gocd_server_addtional_parameters : ""
+
+gocd_server_work_dir : "/var/lib/go-server"
