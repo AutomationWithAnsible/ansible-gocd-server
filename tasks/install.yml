@@ -3,3 +3,10 @@
   apt: 
    pkg=go-server={{ gocd_server_version }}
    state=present
+
+- name: start go-server
+  service: name=go-server 
+   state=started
+   enabled=yes
+  notify:
+     - wait_for_gocd_server

@@ -1,2 +1,7 @@
 ---
-# handlers file for ansible-gocd-server
+
+- name: wait_for_gocd_server
+  wait_for: 
+  	port="{{gocd_server_port}}"
+  	timeout="{{gocd_server_wait_for_timeout}}"
+  	delay=10

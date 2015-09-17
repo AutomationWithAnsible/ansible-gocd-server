@@ -2,3 +2,7 @@
 # defaults file for ansible-gocd-server
 
 gocd_server_version : "latest"
+
+gocd_server_port  : 8153
+
+gocd_server_wait_for_timeout : 180
