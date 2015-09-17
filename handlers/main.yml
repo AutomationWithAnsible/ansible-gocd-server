@@ -2,7 +2,7 @@
 - name: restart_gocd_server
   service: 
    name=go-server
-   state=restart
+   state=restarted
    enabled=yes
   notify:
      - wait_for_gocd_server
