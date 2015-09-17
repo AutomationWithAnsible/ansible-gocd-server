@@ -3,6 +3,7 @@
   command: java -version
   changed_when: False
   register: java_version
+  ignore_errors: true
 
 - name: Fail if java is not present or version is lower than 1.7
   fail:
