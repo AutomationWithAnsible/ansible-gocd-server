@@ -4,12 +4,26 @@
   apt_repository: 
    repo='deb {{gocd_server_apt_repo}} /'
    state=present
+  register: thoughtworks_repo_install
 
-- name: install | apt install go-server
+- name: install | Update apt cache repo 
+  apt:
+    update_cache=yes
+  when: thoughtworks_repo_install | changed
+
+- name: install | apt install go-server latest available
+  apt: 
+   pkg="go-server"
+   state="latest"
+   force=yes
+  when: gocd_server_version | lower == "latest"
+
+- name: install | apt install go-server specific version
   apt: 
    pkg="go-server={{ gocd_server_version }}"
-   state=present
+   state="present"
    force=yes
+  when: gocd_server_version | lower != "latest"
 
 - name: install | start go-server
   service: 
