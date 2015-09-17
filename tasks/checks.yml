@@ -1,0 +1,10 @@
+---
+- name: Check Java
+  command: java -version
+  changed_when: False
+  register: java_version
+
+- name: Fail if version blaaa
+  fail:
+    msg="Unsusadasd "
+  when: java_version.stdout.find('java version \"1.7') != -1 or java_version.stdout.find('java version \"1.8') != -1

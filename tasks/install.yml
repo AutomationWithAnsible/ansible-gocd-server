@@ -1,0 +1,5 @@
+---
+- name: apt install go-server
+  apt: 
+   pkg=go-server={{ gocd_server_version }}
+   state=present
