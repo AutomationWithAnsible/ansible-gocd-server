@@ -4,7 +4,7 @@
   changed_when: False
   register: java_version
 
-- name: Fail if version blaaa
+- name: Fail if java is not present or version is lower than 1.7
   fail:
-    msg="Unsusadasd "
+    msg="Please check whether you have java installed or JDK version is greater than 1.6"
   when: java_version.stdout.find('java version \"1.7') != -1 or java_version.stdout.find('java version \"1.8') != -1
